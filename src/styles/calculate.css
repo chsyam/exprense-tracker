@@ -1,0 +1,15 @@
+.calculate {
+    width: max-content;
+    margin: 5% auto;
+    display: flex;
+    justify-content: center;
+    font-family: "Poppins";
+}
+
+.calculate .table tbody td:nth-child(1) {
+    min-width: 200px;
+}
+
+.calculate .table tbody td:nth-child(2) {
+    min-width: 200px;
+}

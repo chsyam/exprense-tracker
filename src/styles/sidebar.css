@@ -1,0 +1,24 @@
+.sidebar {
+  font-family: "Poppins";
+  margin-left: 0;
+  padding-left: 0;
+  font-weight: normal;
+}
+
+.sidebar ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.sidebar ul li {
+  color: white;
+  background-color: blue;
+  margin: 10px;
+  border: 1px solid blue;
+  list-style: none;
+  padding: 10px;
+  font-size: 22px;
+  border-radius: 10px;
+  cursor: pointer;
+}

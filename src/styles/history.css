@@ -1,0 +1,46 @@
+.history {
+	display: flex;
+	justify-content: center;
+	font-family: "Poppins";
+}
+
+.table {
+	width: 80%;
+	text-align: left;
+	border: 1px solid blue;
+	background-color: rgb(204, 239, 239);
+	border-collapse: collapse;
+	text-align: center;
+}
+
+.table th {
+	background-color: blue;
+	color: white;
+	font-weight: 400;
+	border: none;
+	text-align: center;
+}
+
+.table tbody tr:nth-child(even) {
+	background-color: rgb(212, 210, 210);
+}
+
+.table td,
+.table th {
+	height: 50px;
+	border: 1px solid black;
+	padding: 5px;
+	text-justify: auto;
+}
+
+.table tbody tr td:nth-child(1) {
+	width: 40px;
+	text-align: center;
+}
+
+.table tbody tr td:nth-child(2),
+.table tbody tr td:nth-child(3),
+.table tbody tr td:nth-child(4),
+.table tbody tr td:nth-child(5) {
+	text-align: center;
+}

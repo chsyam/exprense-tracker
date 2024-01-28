@@ -1,0 +1,120 @@
+h1 {
+    text-align: center;
+    font-weight: 500;
+    font-family: "Poppins";
+}
+
+.form {
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.form-div {
+    border: 2px solid blue;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 8px 8px 24px gray;
+    width: 500px;
+}
+
+.title {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.checked-item,
+.not-checked-item {
+    margin-left: 10px;
+}
+
+.checked-item {
+    text-decoration: line-through;
+}
+
+.form-div table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.form-div table tr td {
+    padding: 10px;
+}
+
+.form-div table tr:nth-child(1) {
+    height: 60px;
+}
+
+.form-div table tr:nth-child(2) {
+    height: 110px;
+}
+
+.form-div table tr:nth-child(2) {
+    height: 110px;
+}
+
+.form-div table tr:nth-child(3) {
+    border: none;
+}
+
+.amount,
+.description {
+    width: 90%;
+    padding: 5px;
+    border-radius: 5px;
+    font-family: "Poppins";
+    resize: none;
+    border: 2px solid green;
+}
+
+.list-container div {
+    margin: 10px;
+    font-size: 18px;
+}
+
+.list-container div input[type="checkbox"] {
+    background-color: green;
+    height: 18px;
+    width: 18px;
+}
+
+.list-container div label {
+    font-size: 18px;
+    line-height: 20px;
+    background-color: rgb(247, 233, 233);
+}
+
+.members {
+    height: 60px;
+    background-color: gray;
+    padding: 10px;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+.buttons input {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+}
+
+.buttons input[type="submit"] {
+    background-color: green;
+    color: white;
+    font-weight: 500;
+    font-size: large;
+}
+
+.buttons input[type="reset"] {
+    background-color: red;
+    color: white;
+    font-weight: 500;
+    font-size: large;
+}
