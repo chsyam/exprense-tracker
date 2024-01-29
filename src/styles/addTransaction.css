@@ -9,6 +9,7 @@ h1 {
     display: flex;
     justify-content: center;
     width: 100%;
+    margin: 0 0 20px 0;
 }
 
 .form-div {
@@ -59,7 +60,8 @@ h1 {
 }
 
 .amount,
-.description {
+.description,
+.selection select {
     width: 90%;
     padding: 5px;
     border-radius: 5px;
@@ -117,4 +119,7 @@ h1 {
     color: white;
     font-weight: 500;
     font-size: large;
+}
+.selection select {
+    width: 94%;
 }

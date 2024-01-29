@@ -13,6 +13,7 @@ const History = () => {
                     }
                 });
                 setData(response);
+                console.log(response);  
             } catch (error) {
                 console.error(error.message);
             }
@@ -23,6 +24,7 @@ const History = () => {
 
     return (
         <div>
+            <h1>History</h1>
             <div className="history">
                 <table className="table">
                     <thead>
@@ -30,7 +32,7 @@ const History = () => {
                             <th>ID</th>
                             <th>Description</th>
                             <th>Amount</th>
-                            {/* <th>per Head</th> */}
+                            <th>Transaction Owner</th>
                             <th>Date</th>
                             {/* <th>Time</th> */}
                             <th>Members Included</th>
@@ -42,13 +44,8 @@ const History = () => {
                                 <td>{item.id}</td>
                                 <td>{item.description}</td>
                                 <td>{"₹ " + item.amount}</td>
-                                {/* <td>
-                                    {
-                                        (item.users_included.length === 0) ? item.amount : item.amount / item.users_included.length
-                                    }
-                                </td> */}
+                                <td>{item.owner}</td>
                                 <td>{item.transactionDate}</td>
-                                {/* <td>{item.transactionTime}</td> */}
                                 <td>
                                     {
                                         item.users_included.join(" , ")

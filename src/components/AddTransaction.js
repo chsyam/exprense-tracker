@@ -6,6 +6,7 @@ function AddTransaction(props) {
     const [amount, setAmount] = useState(0);
     const [description, setDescription] = useState("");
     const [checked, setChecked] = useState([]);
+    const [owner, setOwner] = useState("syamkumar ch");
 
     const handleCheck = (event) => {
         var updatedList = [...checked];
@@ -36,9 +37,11 @@ function AddTransaction(props) {
                 })
 
                 console.log(users_included);
-                const response = await axios.post('http://localhost:8080/transactions/save', {
-                    "amount": amount, "description": description, "users_included": users_included
-                }, {
+                const response = await axios.post('http://localhost:8080/transactions/save',
+                    {
+                        "amount": amount, "description": description, "users_included": users_included, "owner": owner
+                    },
+                    {
                     headers: {
                         "Content-Type": "application/json"
                     },
@@ -63,6 +66,18 @@ function AddTransaction(props) {
                                 <td>Amount</td>
                                 <td>
                                     <input className="amount" type="number" onChange={(event) => setAmount(event.target.value)} placeholder="enter amount" required />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Owner</td>
+                                <td className="selection">
+                                    <select value={owner} onChange={(e) => { setOwner(e.target.value) }}>
+                                        {props.users.map((user, index) => (
+                                            <option value={user.fullName} key={index}>
+                                                {user.fullName}
+                                            </option>
+                                        ))}
+                                    </select>
                                 </td>
                             </tr>
                             <tr>

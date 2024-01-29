@@ -22,12 +22,18 @@ export default function Calculation(props) {
         fetchData();
     }, []);
 
-    const CalculateTotal = (userName) => {
+    const [owner, setOwner] = useState("syamkumar ch")
+
+    const handleChange = (e) => {
+        setOwner(e.target.value);
+    }
+
+    const CalculateTotal = (userName, ownerName) => {
         let total = 0;
         if (data.length === 0)
             return "Nothing"
         data.forEach((transaction) => {
-            if (transaction.users_included.includes(userName)) {
+            if (transaction.owner === ownerName && transaction.users_included.includes(userName)) {
                 total += transaction.amount / transaction.users_included.length;
             }
         });
@@ -35,27 +41,37 @@ export default function Calculation(props) {
     }
 
     return (
-        <div className="calculate">
-            <table className="table">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Total Amount</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        props.users.map((user, index) => (
-                            user.fullName !== "syamkumar ch" && (
-                                <tr key={index}>
-                                    <td>{user.fullName}</td>
-                                    <td>{"₹ " + CalculateTotal(user.fullName)}</td>
-                                </tr>
-                            )
-                        ))
-                    }
-                </tbody>
-            </table>
+        <div className="section">
+            <span>Whose Amount should be calculate? <h1>{owner}</h1></span>
+            <select value={owner} onChange={handleChange}>
+                {props.users.map((user, index) => (
+                    <option value={user.fullName} key={index}>
+                        {user.fullName}
+                    </option>
+                ))}
+            </select>
+            <div className="calculate">
+                <table className="table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Total Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            props.users.map((user, index) => (
+                                user.fullName !== owner && (
+                                    <tr key={index}>
+                                        <td>{user.fullName}</td>
+                                        <td>{"₹ " + CalculateTotal(user.fullName, owner)}</td>
+                                    </tr>
+                                )
+                            ))
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div >
     );
 }
