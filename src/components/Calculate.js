@@ -45,8 +45,8 @@ export default function Calculation(props) {
             <span>Whose Amount should be calculate? <h1>{owner}</h1></span>
             <select value={owner} onChange={handleChange}>
                 {props.users.map((user, index) => (
-                    <option value={user.fullName} key={index}>
-                        {user.fullName}
+                    <option value={user.userName} key={index}>
+                        {user.userName}
                     </option>
                 ))}
             </select>
@@ -61,10 +61,10 @@ export default function Calculation(props) {
                     <tbody>
                         {
                             props.users.map((user, index) => (
-                                user.fullName !== owner && (
+                                user.userName !== owner && (
                                     <tr key={index}>
-                                        <td>{user.fullName}</td>
-                                        <td>{"₹ " + CalculateTotal(user.fullName, owner)}</td>
+                                        <td>{user.userName}</td>
+                                        <td>{"₹ " + CalculateTotal(user.userName, owner)}</td>
                                     </tr>
                                 )
                             ))

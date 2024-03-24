@@ -5,6 +5,7 @@ import History from './components/History';
 import AddTransaction from './components/AddTransaction';
 import axios from 'axios';
 import Caclculate from './components/Calculate';
+import Register from './components/Register';
 
 
 function App() {
@@ -42,13 +43,18 @@ function App() {
 		fetchData();
 	}, []);
 
-
+	const [registartionForm, setRegistartionForm] = useState(true);
 	const [addButton, setAddButton] = useState(false);
 	const [historyButton, setHistoryButton] = useState(false);
-	const [calculateButton, setCalculateButton] = useState(true);
+	const [calculateButton, setCalculateButton] = useState(false);
 	return (
 		<div>
 			<Sidebar setAddButton={setAddButton} setHistoryButton={setHistoryButton} setCalculateButton={setCalculateButton} />
+			{
+				registartionForm && (
+					<Register users={users} setRegistartionForm={setRegistartionForm} />
+				)
+			}
 			{
 				addButton && (
 					<AddTransaction users={users} setHistoryButton={setHistoryButton} setAddButton={setAddButton} />

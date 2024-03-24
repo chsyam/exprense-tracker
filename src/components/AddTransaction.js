@@ -42,10 +42,10 @@ function AddTransaction(props) {
                         "amount": amount, "description": description, "users_included": users_included, "owner": owner
                     },
                     {
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                });
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                    });
                 console.log(response);
             } catch (error) {
                 console.error(error.message);
@@ -73,8 +73,8 @@ function AddTransaction(props) {
                                 <td className="selection">
                                     <select value={owner} onChange={(e) => { setOwner(e.target.value) }}>
                                         {props.users.map((user, index) => (
-                                            <option value={user.fullName} key={index}>
-                                                {user.fullName}
+                                            <option value={user.userName} key={index}>
+                                                {user.userName}
                                             </option>
                                         ))}
                                     </select>
@@ -91,8 +91,8 @@ function AddTransaction(props) {
                                 <td className="list-container">
                                     {props.users.map((item, index) => (
                                         <div className="" key={index}>
-                                            <input className="checkbox" id={index} value={item.fullName} type="checkbox" onChange={handleCheck} />
-                                            <label htmlFor={index} className={isChecked(item.fullName)}>{item.fullName}</label>
+                                            <input className="checkbox" id={index} value={item.userName} type="checkbox" onChange={handleCheck} />
+                                            <label htmlFor={index} className={isChecked(item.userName)}>{item.userName}</label>
                                         </div>
                                     ))}
                                 </td>

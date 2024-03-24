@@ -1,0 +1,16 @@
+.registartion-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.registartion-form form label {
+    margin-right: 10px;
+}
+
+.registartion-form form input {
+    padding: 10px;
+    border: 2px solid black;
+    outline: none;
+    border-radius: 5px;
+}
