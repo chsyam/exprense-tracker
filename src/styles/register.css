@@ -1,3 +1,9 @@
+.registartion-form {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}
+
 .registartion-form form {
     display: flex;
     flex-direction: column;
@@ -10,7 +16,18 @@
 
 .registartion-form form input {
     padding: 10px;
-    border: 2px solid black;
+    border: 1px solid gray;
     outline: none;
     border-radius: 5px;
+    width: 250px;
+}
+
+.registartion-form form input[type="submit"] {
+    background-color: green;
+    color: white;
+    font-size: 24px;
+}
+
+.registartion-form form table tr {
+    height: 70px;
 }

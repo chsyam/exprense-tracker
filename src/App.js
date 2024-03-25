@@ -49,27 +49,29 @@ function App() {
 	const [calculateButton, setCalculateButton] = useState(false);
 	return (
 		<div>
-			<Sidebar setAddButton={setAddButton} setHistoryButton={setHistoryButton} setCalculateButton={setCalculateButton} />
-			{
-				registartionForm && (
-					<Register users={users} setRegistartionForm={setRegistartionForm} />
-				)
-			}
-			{
-				addButton && (
-					<AddTransaction users={users} setHistoryButton={setHistoryButton} setAddButton={setAddButton} />
-				)
-			}
-			{
-				historyButton && (
-					<History data={data} />
-				)
-			}
-			{
-				calculateButton && (
-					<Caclculate data={data} users={users} />
-				)
-			}
+			<Sidebar setRegistartionForm={setRegistartionForm} setAddButton={setAddButton} setHistoryButton={setHistoryButton} setCalculateButton={setCalculateButton} />
+			<div className='content_section'>
+				{
+					registartionForm && (
+						<Register users={users} setRegistartionForm={setRegistartionForm} />
+					)
+				}
+				{
+					addButton && (
+						<AddTransaction users={users} setHistoryButton={setHistoryButton} setAddButton={setAddButton} />
+					)
+				}
+				{
+					historyButton && (
+						<History data={data} />
+					)
+				}
+				{
+					calculateButton && (
+						<Caclculate data={data} users={users} />
+					)
+				}
+			</div>
 		</div>
 	);
 }
