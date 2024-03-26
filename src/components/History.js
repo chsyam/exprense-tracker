@@ -1,9 +1,12 @@
 import "./../styles/history.css"
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 const History = () => {
     const [data, setData] = useState([]);
+    const token = Cookies.get("token");
+    console.log(token, "hist");
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -13,7 +16,7 @@ const History = () => {
                     }
                 });
                 setData(response);
-                console.log(response);  
+                console.log(response);
             } catch (error) {
                 console.error(error.message);
             }

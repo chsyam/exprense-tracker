@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import "./../styles/addTransaction.css";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 function AddTransaction(props) {
     const [amount, setAmount] = useState(0);
     const [description, setDescription] = useState("");
     const [checked, setChecked] = useState([]);
     const [owner, setOwner] = useState("syamkumar ch");
-
+    const token = Cookies.get("token");
+    console.log(token, "addt")
     const handleCheck = (event) => {
         var updatedList = [...checked];
         if (event.target.checked) {

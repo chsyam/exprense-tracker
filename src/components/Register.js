@@ -1,10 +1,26 @@
 import { useEffect, useState } from "react";
 import "./../styles/register.css";
 import axios from "axios";
+import Cookies from 'js-cookie';
 
 const Register = () => {
     const [users, setUsers] = useState([])
     useEffect(() => {
+        const LoginTest = async () => {
+            try {
+                const response = await axios.post("http://localhost:8082/login", {
+                    "username": "nagasaib",
+                    "password": "123456"
+                });
+                if (response.status === 200) {
+                    const token = response.data.token;
+                    Cookies.set('token', token, { expires: 24 });
+                }
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        LoginTest();
         const fetchData = async () => {
             try {
                 const { data: response } = await axios.get('http://localhost:8080/users/get/all', {
@@ -44,7 +60,7 @@ const Register = () => {
         const isValid = validateForm();
         if (isValid) {
 
-            const response = await axios.post("http://localhost:8080/users/save",
+            const response = await axios.post("http://localhost:8081/users/save",
                 formData,
                 {
                     headers: {
