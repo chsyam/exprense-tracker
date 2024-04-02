@@ -8,24 +8,26 @@ const Register = () => {
     useEffect(() => {
         const LoginTest = async () => {
             try {
-                const response = await axios.post("http://localhost:8082/login", {
+                const response = await axios.post("http://localhost:8080/login", {
                     "username": "nagasaib",
                     "password": "123456"
                 });
                 if (response.status === 200) {
                     const token = response.data.token;
+                    console.log(token);
                     Cookies.set('token', token, { expires: 24 });
                 }
             } catch (error) {
                 console.log(error)
             }
         }
-        LoginTest();
+        // LoginTest();
         const fetchData = async () => {
             try {
+                const token = Cookies.get('token');
                 const { data: response } = await axios.get('http://localhost:8080/users/get/all', {
                     headers: {
-                        "Content-Type": "application/json"
+                        Authorization: `Bearer ${token}`
                     }
                 });
                 setUsers(response);
@@ -39,7 +41,7 @@ const Register = () => {
     const [formData, setFormData] = useState({
         firstName: "",
         lastName: "",
-        userName: "",
+        username: "",
         email: "",
         mobileNumber: "",
         password: "",
@@ -59,12 +61,12 @@ const Register = () => {
         e.preventDefault();
         const isValid = validateForm();
         if (isValid) {
-
-            const response = await axios.post("http://localhost:8081/users/save",
+            const token = Cookies.get('token');
+            const response = await axios.post("http://localhost:8080/register",
                 formData,
                 {
                     headers: {
-                        "Content-Type": "application/json"
+                        "Authorization": `Bearer ${token}`
                     },
                 });
             if (response.status === 200) {

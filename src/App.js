@@ -6,6 +6,7 @@ import AddTransaction from './components/AddTransaction';
 import axios from 'axios';
 import Caclculate from './components/Calculate';
 import Register from './components/Register';
+import Cookies from 'js-cookie';
 
 
 function App() {
@@ -13,11 +14,15 @@ function App() {
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
+				Cookies.set("token", "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJuYWdhc2FpYiIsImlhdCI6MTcxMTU2ODEyMywiZXhwIjoxNzExNjU0NTIzfQ.e533DxCHiVadvMTY9967lULycCu7YAJi7uwbTuxQPISvVJq-iW1p8VFxIRR3UMsT")
+				const token = Cookies.get("token");
 				const { data: response } = await axios.get('http://localhost:8080/transactions/get/all', {
 					headers: {
-						"Content-Type": "application/json"
+						'Content-Type': 'application/json',
+						'Authorization': `Bearer ${token}`,
 					}
 				});
+				console.log(response);
 				setData(response);
 			} catch (error) {
 				console.error(error.message);
@@ -30,12 +35,15 @@ function App() {
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
+				const token = Cookies.get("token");
 				const { data: response } = await axios.get('http://localhost:8080/users/get/all', {
 					headers: {
-						"Content-Type": "application/json"
+						"Content-Type": "application/json",
+						'Authorization': `Bearer ${token}`,
 					}
 				});
 				setUsers(response);
+				console.log(response);
 			} catch (error) {
 				console.error(error.message);
 			}

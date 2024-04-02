@@ -8,8 +8,6 @@ function AddTransaction(props) {
     const [description, setDescription] = useState("");
     const [checked, setChecked] = useState([]);
     const [owner, setOwner] = useState("syamkumar ch");
-    const token = Cookies.get("token");
-    console.log(token, "addt")
     const handleCheck = (event) => {
         var updatedList = [...checked];
         if (event.target.checked) {
@@ -33,6 +31,7 @@ function AddTransaction(props) {
         event.preventDefault();
         if (amount !== 0 && checkedItems.length !== 0 && description.length > 2) {
             try {
+                const token = Cookies.get('token');
                 const users_included = [];
                 checkedItems.split(",").forEach(item => {
                     users_included.push(item.trim());
@@ -45,9 +44,10 @@ function AddTransaction(props) {
                     },
                     {
                         headers: {
-                            "Content-Type": "application/json"
+                            "Authorization": `Bearer ${token}`
                         },
-                    });
+                    }
+                );
                 console.log(response);
             } catch (error) {
                 console.error(error.message);

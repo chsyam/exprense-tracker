@@ -1,20 +1,21 @@
 import "./../styles/history.css"
 import { useState, useEffect } from "react";
 import axios from "axios";
-import Cookies from "js-cookie";
+// import Cookies from "js-cookie";
 
 const History = () => {
     const [data, setData] = useState([]);
-    const token = Cookies.get("token");
-    console.log(token, "hist");
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const { data: response } = await axios.get('http://localhost:8080/transactions/get/all', {
-                    headers: {
-                        "Content-Type": "application/json"
+                const token = "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJuYWdhc2FpYiIsImlhdCI6MTcxMTU2MTQwNiwiZXhwIjoxNzExNjQ3ODA2fQ.xzz6RlWFVo7g8NYXshmf1kdybSnrtVCeZ4723QTpJBkZIwx1FOMwk2tBXvMK4y97";//Cookies.get('token');
+                const { data: response } = await axios.get('http://localhost:8080/transactions/get/all',
+                    {
+                        headers: {
+                            "Authorization": `Bearer ${token}`
+                        },
                     }
-                });
+                );
                 setData(response);
                 console.log(response);
             } catch (error) {

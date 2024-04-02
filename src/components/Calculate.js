@@ -2,6 +2,7 @@ import "./../styles/calculate.css";
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 export default function Calculation(props) {
 
@@ -9,11 +10,13 @@ export default function Calculation(props) {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const { data: response } = await axios.get('http://localhost:8080/transactions/get/all', {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                });
+                const token = Cookies.get('token');
+                const { data: response } = await axios.get('http://localhost:8080/transactions/get/all',
+                    {
+                        headers: {
+                            "Authorization": `Bearer ${token}`
+                        },
+                    });
                 setData(response);
             } catch (error) {
                 console.error(error.message);
